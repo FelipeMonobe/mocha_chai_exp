@@ -63,6 +63,31 @@ describe('PERSON', () => {
 
   // WEIGHT
   describe('weight', () => {
+    it('is a number', () => {
+      EXPECT(person.weight)
+        .to.be.a('number');
+    });
+
+    it('equals 50', () => {
+      EXPECT(person.weight)
+        .to.equal(50);
+    });
+
+    it('is muttable', () => {
+      EXPECT(() => person.weight = 83.33)
+        .to.change(person, 'weight');
+    });
+
+    it('is greater than 0', () => {
+      EXPECT(person.weight)
+        .to.be.above(0);
+    });
+
+    it('BMI is between 10-60', () => {
+      EXPECT(person.calculateBMI())
+        .to.be.within(10, 60);
+    });
+
     it('BMI equals 17.7154195011',() => {
       EXPECT(person.calculateBMI())
         .to.be.equal(17.71541950113379);
